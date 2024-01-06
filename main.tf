@@ -17,3 +17,4 @@ resource "aws_vpc" "primary_network" {
 
 }
 
+
