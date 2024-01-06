@@ -9,9 +9,12 @@ resource "aws_instance" "example" {
   instance_type = "t2.micro"
   subnet_id = "subnet-0d6e3655d55ad86c3"
   key_name = "Devops"
-  user_data = <<-EOF
-              #!/bin/bash
-              sudo apt-get update
-              sudo apt-get install -y nginx
-              EOF
+
+  provisioner "remote-exec" {
+    inline = [
+       "sudo apt-get update",
+      "sudo apt-get install -y nginx"
+    ]
+  }
+            
 }
